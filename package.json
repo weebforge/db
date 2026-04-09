@@ -1,0 +1,33 @@
+{
+  "name": "@weebforge/db",
+  "version": "1.0.0",
+  "description": "SQLite data layer for Node.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "wdb": "dist/cli/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "bench": "tsx src/cli/index.ts bench",
+    "clean": "rimraf dist"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "license": "LGPL-3.0-or-later",
+  "author": "Clyders",
+  "dependencies": {
+    "@clack/prompts": "^1.2.0",
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "rimraf": "^6.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+*.db
+*.db-wal
+*.db-shm
+.bench_data/
+package-lock.json
+examples/
