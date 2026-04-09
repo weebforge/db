@@ -50,6 +50,11 @@ db.setMany([
   { key: 'cache:B', value: [4, 5, 6] }
 ]);
 
+db.updateMany([
+  { key: 'cache:A', patch: { active: true } },
+  { key: 'cache:B', patch: { active: false } }
+]);
+
 const records = db.getMany(['cache:A', 'cache:B']);
 db.deleteMany(['cache:A', 'cache:B']);
 ```
@@ -61,6 +66,18 @@ Executes a `LIKE` query against the keyspace. In production workloads, ensure ke
 ```typescript
 // Returns array of values for keys starting with 'user:'
 const users = db.find('user:*');
+
+// Returns an array of EVERY single record in the active namespace completely parsed
+const allRecords = db.find('*');
+```
+
+### Discovery
+
+To read simply the keys without evaluating or parsing their JSON payloads, use `keys()`.
+
+```typescript
+// Returns an array of string keys inside the namespace
+const keysList = db.keys(); 
 ```
 
 ## Time-To-Live (TTL)

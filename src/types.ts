@@ -104,3 +104,8 @@ export interface BulkSetEntry {
   value: unknown;
   ttl?: number;
 }
+
+export interface BulkUpdateEntry {
+  key: string;
+  patch: Record<string, unknown>;
+}

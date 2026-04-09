@@ -91,6 +91,10 @@ export class WeebDB {
     this.kvStore.setMany(entries);
   }
 
+  updateMany(entries: import('./types').BulkUpdateEntry[]): void {
+    this.kvStore.updateMany(entries);
+  }
+
   getMany<T = unknown>(keys: string[]): Map<string, T> {
     return this.kvStore.getMany<T>(keys);
   }
@@ -211,6 +215,7 @@ export type {
   MigrationDef,
   RunResult,
   BulkSetEntry,
+  BulkUpdateEntry,
   CacheOptions,
   EncryptionOptions,
 } from './types';

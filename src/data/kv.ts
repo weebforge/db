@@ -1,4 +1,4 @@
-import type { SqliteDatabase, BulkSetEntry } from '../types';
+import type { SqliteDatabase, BulkSetEntry, BulkUpdateEntry } from '../types';
 import type { StatementPool } from '../core/statements';
 import type { TransactionManager } from '../core/transaction';
 import type { LRUCache } from '../cache/cache';
@@ -138,6 +138,14 @@ export class KVStore {
 
     const merged = Object.assign({}, existing, patch);
     this.set(key, merged);
+  }
+
+  updateMany(entries: BulkUpdateEntry[]): void {
+    this.txn.immediate(() => {
+      for (const entry of entries) {
+        this.update(entry.key, entry.patch);
+      }
+    });
   }
 
   find<T = unknown>(pattern: string): Array<{ key: string; value: T }> {
