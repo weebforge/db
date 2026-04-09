@@ -105,7 +105,6 @@ export async function initCommand(args: string[]) {
       synchronous: 'NORMAL',
     },
     cache: enableCache ? { maxSize: 10000 } : false,
-    namespaces: ['default'],
     migrations: createMigrations ? './migrations' : undefined,
   };
 
