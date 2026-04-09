@@ -218,3 +218,5 @@ export type {
 export { Table } from './data';
 export { LRUCache } from './cache';
 export { Encryptor } from './security';
+
+export default WeebDB;
