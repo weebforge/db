@@ -168,11 +168,15 @@ export class WeebDB {
 
   // namespace
 
-  ns(namespace: string): WeebDB {
-    return new WeebDB({
-      ...this.opts,
+  ns(namespace: string): KVStore {
+    return new KVStore(
+      this.engine.db,
+      this.pool,
+      this.txnManager,
       namespace,
-    });
+      this.cacheLayer,
+      this.encryptor
+    );
   }
 
   // lifecycle
@@ -220,7 +224,7 @@ export type {
   EncryptionOptions,
 } from './types';
 
-export { Table } from './data';
+export { Table, KVStore } from './data';
 export { LRUCache } from './cache';
 export { Encryptor } from './security';
 
